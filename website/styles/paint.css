@@ -14,6 +14,24 @@ body{
     height: 100%;
    
 }
+header{
+    margin: 0;
+    align-items: center;
+    background: fixed;
+    background-color: #3b3e6e;
+}
+h1{
+    text-align: center;
+    font-size: 40px;
+    margin: 0;
+}
+hr{
+    color: #222f3e;
+    width: 100%;
+    border: 5px solid #3b3e6e;
+    border-radius: 75%;
+   
+}
 
 h3{
     text-align: center;
