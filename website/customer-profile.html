@@ -18,10 +18,42 @@
                 <a href="homepage-customer.html">Home</a>
                 <a href="products.html">My Products</a>
                 <a href="about.html">About Us</a>
-                <a href="user-profile.html" class="active">My Profile</a>
             </nav>
-            <button class="logout-btn" onclick="logout()">Logout</button>
+        
+        <div class="profile-menu">
+            <img src="images/avatar-logo.jpg" width="50" onclick="toggleMenu()" />
+            <div class="sub-menu-wrap" id="subMenu">
+              <div class="sub-menu">
+                <div class="user-info">
+                  <img src="images/avatar-logo.jpg" />
+                  <h2><span id="username"></span></h2>
+                </div>
+                <hr />
+                <a href="customer-profile.html" class="sub-menu-link">
+                  <img src="images/profile images/profile.png" />
+                  <p>Edit Profile</p>
+                  <span>></span>
+                </a>
+                <a href="" class="sub-menu-link">
+                  <img src="images/profile images/setting.png" />
+                  <p>Settings</p>
+                  <span>></span>
+                </a>
+                <a href="" class="sub-menu-link">
+                  <img src="images/profile images/help.png" />
+                  <p>help</p>
+                  <span>></span>
+                </a>
+                <a href="" class="sub-menu-link">
+                  <img src="images/profile images/logout.png" />
+                  <p>logout</p>
+                  <span>></span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+        
     </header>
     
 
@@ -60,6 +92,11 @@
             alert('You have been logged out.');
             window.location.href = 'login.html'; // הפנייה לדף ההתחברות
         }
+        let subMenu = document.getElementById("subMenu");
+        function toggleMenu(){
+        subMenu.classList.toggle("open-menu");
+}
+
     </script>
 </body>
 </html>
