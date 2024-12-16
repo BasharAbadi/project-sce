@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use('/api/auth', authRoutes);
 
 // דף ברירת מחדל
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'website', 'login.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'website', 'main_page.html')));
 
 // הפעלת השרת
 const PORT = process.env.PORT || 3000;
