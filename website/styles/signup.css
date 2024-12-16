@@ -28,7 +28,7 @@ body {
 }
 
 .logo-container {
-    flex: 1;
+    flex: 0.5;
     padding: 130px;
     display: flex;
     flex-direction: column;
@@ -40,7 +40,7 @@ body {
 }
 
 .logo {
-    max-width: 200px;
+    max-width: 300px;
     margin-bottom: 20px;
     border-radius: 8px; /* Optional: If you want rounded corners */
 }
