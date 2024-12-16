@@ -35,7 +35,7 @@
                     <p></p>
                     <button type="Submit" id="loginButton">Log in</button>
                     <p></p>
-                    <p><a href="forget-password.html">forget password?.</a></p>
+                    <p><a href="forgot-password.html">forgot password?.</a></p>
                     <hr>
                     <p><a href="customer-signup.html">Sign up with Customer account</a></p>
                     <p><a href="contractor-signup.html">Sign up with Contractor account</a></p>
@@ -63,8 +63,18 @@
                     });
 
                     if (response.ok) {
-                        alert('Login successful! Redirecting to dashboard...');
-                        window.location.href = 'dashbord.html'; // Correct path to dashboard
+                        const { token, accountType } = await response.json();
+
+                        // Save the token in localStorage (if needed)
+                        localStorage.setItem('token', token);
+
+                        // Redirect based on account type
+                        if (accountType === 'Customer') {
+                            window.location.href = 'homepage-customer.html';
+                        } else if (accountType === 'Contractor') {
+                            window.location.href = 'homepage-contractor.html';
+                        }
+
                     } else {
                         const errorMessage = await response.text();
                         alert('Error: ' + errorMessage);
