@@ -21,8 +21,7 @@ header {
 }
 
 header .logo img {
-    width: 120px;
-    height: auto;
+    height: 100px;
 }
 
 .header-content {
@@ -35,7 +34,9 @@ header nav {
     gap: 20px;
     margin-right: 20px;
 }
-
+header a.active, nav a:hover {
+    color: #f95f5f;
+}
 header nav a {
     color: #000000;
     font-weight: 600;
@@ -49,11 +50,12 @@ header nav a:hover {
 header .btn {
     background-color: #f76c6c;
     color: #ffffff;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: 600;
 }
 
 header .btn:hover {
