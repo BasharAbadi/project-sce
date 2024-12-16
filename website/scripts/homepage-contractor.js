@@ -1,7 +1,13 @@
 const username = localStorage.getItem('username');
+const username2 = localStorage.getItem('username');
 if(username){
     document.getElementById("username").innerText = username;
 }
+if(username2){
+    document.getElementById("username2").innerText = username2;
+}
+
+
 
 document.getElementById('feature').addEventListener('click', (e) => {
     e.preventDefault();
