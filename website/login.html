@@ -63,10 +63,11 @@
                     });
 
                     if (response.ok) {
-                        const { token, accountType } = await response.json();
+                        const { token, accountType,username } = await response.json();
 
                         // Save the token in localStorage (if needed)
                         localStorage.setItem('token', token);
+                        localStorage.setItem('username', username);
 
                         // Redirect based on account type
                         if (accountType === 'Customer') {
@@ -85,6 +86,36 @@
                 }
             });
         </script>
+        <script>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    try {
+        const response = await fetch('http://localhost:3000/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem('token', data.token); // שמירת הטוקן
+            localStorage.setItem('username', data.username); // שמירת שם המשתמש
+            window.location.href = 'homepage-customer.html'; // מעבר לדף הבית
+        } else {
+            const errorMessage = await response.json();
+            alert('Error: ' + errorMessage.message);
+        }
+    } catch (err) {
+        console.error('Error:', err);
+        alert('An error occurred while logging in.');
+    }
+});
+</script>
+
     </body>
 
 

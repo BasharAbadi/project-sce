@@ -28,6 +28,7 @@
         <h1>Welcome, <span id="username"></span></h1>
     </section>
 
+
     <!-- Main Section -->
     <main>
         <section class="welcome-section">
@@ -55,15 +56,23 @@
     <footer>
         <p>&copy; 2024 RenovaCalc. All rights reserved.</p>
     </footer>
-
     <script>
-        // Simulate logged-in user name
-        const username = "Bashar"; // ניתן להחליף בשם המשתמש מהשרת
+        // שליפת שם המשתמש מה-LocalStorage
+    const username = localStorage.getItem('username');
+    if (username) {
         document.getElementById("username").innerText = username;
+    } else {
+        document.getElementById("username").innerText = "Guest"; // ברירת מחדל
+    }
 
+
+
+
+        // פונקציית Logout
         function logout() {
+            localStorage.clear(); // ניקוי LocalStorage
             alert('You have been logged out.');
-            window.location.href = 'login.html';
+            window.location.href = 'login.html'; // הפניה לדף ההתחברות
         }
     </script>
 </body>

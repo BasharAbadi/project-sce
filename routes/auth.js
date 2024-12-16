@@ -39,7 +39,7 @@ router.post('/signup/contractor', async (req, res) => {
 
 // מסלול התחברות
 router.post('/login', async (req, res) => {
-    console.log('Request body:', req.body); // לוג לעקוב אחרי גוף הבקשה
+    console.log('Request body:', req.body);
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -66,13 +66,18 @@ router.post('/login', async (req, res) => {
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         console.log('Login successful');
-        // res.status(200).json({ token });
-        res.status(200).json({ token, accountType: user.accountType });
+        // נוסיף את שם המשתמש לתגובה
+        res.status(200).json({ 
+            token, 
+            accountType: user.accountType,
+            username: user.username // הוספת שם המשתמש
+        });
     } catch (err) {
         console.error('Error during login:', err);
         res.status(500).json({ message: 'Server error' });
     }
 });
+
 
 
 router.post('/forgot-password', async (req, res) => {
