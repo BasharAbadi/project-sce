@@ -44,17 +44,23 @@
     <script>
         document.getElementById('contractorSignupForm').addEventListener('submit', async (e) => {
             e.preventDefault();
+                       
+            // שולף מידע שהמשתמש הזין
+
             const username = document.getElementById('signupUsername').value;
             const email = document.getElementById('signupEmail').value;
             const password = document.getElementById('signupPassword').value;
             const gender = document.querySelector('input[name="gender"]:checked').value;
 
+            // שליחת בקשה HTTP 
             const response = await fetch('/api/auth/signup/contractor', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, email, password, gender })
             });
 
+            
+            // אם ההרשמה הצליחה אז מעביר אותו לדף הזה
             if (response.ok) {
                 alert('Contractor account created successfully!');
                 window.location.href = 'login.html';
