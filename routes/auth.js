@@ -1,19 +1,25 @@
-const express = require('express');
-const nodemailer = require('nodemailer');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const User = require('../models/user'); // מודל המשתמש
+const express = require('express'); // ספריה ליצירת מסלולים וניהול בקשות
+const nodemailer = require('nodemailer'); //מאפשרת שליחת מיילים
+const bcrypt = require('bcryptjs'); // הצפנת סיסמאות
+const jwt = require('jsonwebtoken'); // משמש ליצירת עבור אימות משתמשים
+const User = require('../models/user'); // מודל המשתמש המייצג את המבנה של המשתמשים בבסיס הנתונים
 
+// יוצר אובייקט שמאפשר להגדיר מסלולים בצורה מאורגנת ונפרדת מהקובץ הראשי
 const router = express.Router();
 
-
+// מסלול להרשמה ללקוח CUSTOMER
 router.post('/signup/customer', async (req, res) => {
+    //שולף מהבקשה את הנתונים שם משתמש , אימייל ...  
     const { username, email, password, gender } = req.body;
 
     try {
+        // מצפין את הסיסמה
         const hashedPassword = await bcrypt.hash(password, 12);
+        // יצירת אובייקט משתמש חדש עם הנתונים ומסמן את סוג החשבון
         const user = new User({ username, email, password: hashedPassword, gender, accountType: 'Customer' });
+        // שומר את המשתמש ב MONGODB
         await user.save();
+        // מחזיר תשובה ללקוח עם סטטוס 201 הצלחה
         res.status(201).json({ message: 'Customer account created successfully' });
     } catch (err) {
         res.status(500).json({ message: 'Error creating customer account' });
@@ -40,21 +46,26 @@ router.post('/signup/contractor', async (req, res) => {
 // מסלול התחברות
 router.post('/login', async (req, res) => {
     console.log('Request body:', req.body);
+    // בודק אם האימייל וסיסמה נשלחו בבקשה 
     const { email, password } = req.body;
 
+    // אם המשתמש לא הזין אימייל או סיסמה או שניהם אז שגיאה
     if (!email || !password) {
         console.log('Missing email or password');
         return res.status(400).json({ message: 'Email and password are required' });
     }
 
     try {
+        // מחפש לפי אימייל ב MONGODB
         console.log('Searching for user...');
         const user = await User.findOne({ email });
+        // אם לא קיים , מחזיר שגיאה 
         if (!user) {
             console.log('User not found');
             return res.status(404).json({ message: 'User not found' });
         }
 
+        // השוואת הסיסמה שנשלחה עם הסיסמה המוצפנת 
         console.log('Comparing passwords...');
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
         if (!isPasswordCorrect) {
@@ -62,6 +73,7 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
+        // אם הסיסמה נכונה 
         console.log('Generating JWT token...');
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
@@ -84,16 +96,15 @@ router.post('/forgot-password', async (req, res) => {
     const { email } = req.body;
 
     try {
-        // בדוק אם המשתמש קיים
+        // בדוק לפי אימייל אם המשתמש קיים
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-
-        // צור טוקן לאיפוס סיסמה
+        // יצירת טוקן לאיפוס סיסמה עם תוקף של שעה 
         const resetToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        // שליחת המייל עם Nodemailer
+        // שליחת אימייל למשתמש עם קישור לאיפוס סיסמה הכולל את הטוקן
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -122,7 +133,9 @@ router.post('/forgot-password', async (req, res) => {
 router.post('/reset-password', async (req, res) => {
     const { token, newPassword } = req.body;
 
+    
     try {
+        // אימות הטוקן לוודא השוא תקין
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const user = await User.findById(decoded.id);
         if (!user) {

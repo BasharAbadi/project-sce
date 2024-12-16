@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Customer Homepage</title>
-    <link rel="stylesheet" href="styles/homepage-customer.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;800&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="styles/homepage-customer.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Header Section -->
     <header>
+<<<<<<< HEAD
         <div class="logo">
             <img src="images/IMG_6583.png" alt="RenovaCalc Logo">
         </div>
@@ -23,60 +27,116 @@
             </nav>
             
             <button class="btn logout-btn" onclick="logout()">Logout</button>
+=======
+      <div class="logo">
+        <img src="images/IMG_6583.png" alt="RenovaCalc Logo" />
+      </div>
+      <div class="header-content">
+        <nav>
+          <a href="home.html">Home</a>
+          <a href="products.html">My Products</a>
+          <a href="about.html">About Us</a>
+        </nav>
+
+        <div class="profile-menu">
+          <img src="images/avatar-logo.jpg" width="50" onclick="toggleMenu()" />
+          <div class="sub-menu-wrap" id="subMenu">
+            <div class="sub-menu">
+              <div class="user-info">
+                <img src="images/avatar-logo.jpg" />
+                <h2><span id="username"></span></h2>
+              </div>
+              <hr />
+              <a href="" class="sub-menu-link">
+                <img src="images/profile images/profile.png" />
+                <p>Edit Profile</p>
+                <span>></span>
+              </a>
+              <a href="" class="sub-menu-link">
+                <img src="images/profile images/setting.png" />
+                <p>Settings</p>
+                <span>></span>
+              </a>
+              <a href="" class="sub-menu-link">
+                <img src="images/profile images/help.png" />
+                <p>help</p>
+                <span>></span>
+              </a>
+              <a href="" class="sub-menu-link">
+                <img src="images/profile images/logout.png" />
+                <p>logout</p>
+                <span>></span>
+              </a>
+            </div>
+          </div>
+>>>>>>> 3d7a67f54cada71b77486725916ce773da769891
         </div>
+
+        <button class="btn logout-btn" onclick="logout()">Logout</button>
+      </div>
     </header>
 
     <!-- Welcome Section -->
     <section class="welcome-user">
-        <h1>Welcome, <span id="username"></span></h1>
+      <h1>Welcome, <span id="username"></span></h1>
     </section>
-
 
     <!-- Main Section -->
     <main>
-        <section class="welcome-section">
-            <h2>Manage your Renovation Costs</h2>
-            <p>Manage and calculate your renovation needs with ease. Add products, estimate costs, and plan efficiently.</p>
-        </section>
+      <section class="welcome-section">
+        <h2>Manage your Renovation Costs</h2>
+        <p>
+          Manage and calculate your renovation needs with ease. Add products,
+          estimate costs, and plan efficiently.
+        </p>
+      </section>
 
-        <section class="features">
-            <div class="feature-card">
-                <h3>Add Products</h3>
-                <p>Easily add items like paint, wood, tiles, and more to calculate costs.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Calculate Costs</h3>
-                <p>Get accurate estimates based on size, volume, and other project parameters.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Track Expenses</h3>
-                <p>Monitor and manage your renovation budget in one place.</p>
-            </div>
-        </section>
+      <section class="features">
+        <div class="feature-card">
+          <h3>Add Products</h3>
+          <p>
+            Easily add items like paint, wood, tiles, and more to calculate
+            costs.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Calculate Costs</h3>
+          <p>
+            Get accurate estimates based on size, volume, and other project
+            parameters.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Track Expenses</h3>
+          <p>Monitor and manage your renovation budget in one place.</p>
+        </div>
+      </section>
     </main>
 
     <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 RenovaCalc. All rights reserved.</p>
+      <p>&copy; 2024 RenovaCalc. All rights reserved.</p>
     </footer>
     <script>
-        // שליפת שם המשתמש מה-LocalStorage
-    const username = localStorage.getItem('username');
-    if (username) {
+      // שליפת שם המשתמש מה-LocalStorage
+      const username = localStorage.getItem("username");
+      if (username) {
         document.getElementById("username").innerText = username;
-    } else {
+      } else {
         document.getElementById("username").innerText = "Guest"; // ברירת מחדל
-    }
+      }
 
+      let subMenu = document.getElementById("subMenu");
+      function toggleMenu() {
+        subMenu.classList.toggle("open-menu");
+      }
 
-
-
-        // פונקציית Logout
-        function logout() {
-            localStorage.clear(); // ניקוי LocalStorage
-            alert('You have been logged out.');
-            window.location.href = 'login.html'; // הפניה לדף ההתחברות
-        }
+      // פונקציית Logout
+      function logout() {
+        localStorage.clear(); // ניקוי LocalStorage
+        alert("You have been logged out.");
+        window.location.href = "login.html"; // הפניה לדף ההתחברות
+      }
     </script>
-</body>
+  </body>
 </html>

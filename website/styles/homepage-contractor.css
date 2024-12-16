@@ -21,11 +21,11 @@ header {
 }
 
 header .logo img {
-    height: 100px;
+    width: 120px;
+    height: auto;
 }
 
-
-
+/* Positioning the parent container of the profile icon */
 .profile-menu {
     position: relative; /* This ensures the dropdown is positioned relative to this container */
 }
@@ -115,12 +115,6 @@ header .logo img {
 }
 
 
-
-
-
-
-
-
 .header-content {
     display: flex;
     align-items: center;
@@ -131,9 +125,7 @@ header nav {
     gap: 20px;
     margin-right: 20px;
 }
-header a.active, nav a:hover {
-    color: #f95f5f;
-}
+
 header nav a {
     color: #000000;
     font-weight: 600;
@@ -147,12 +139,11 @@ header nav a:hover {
 header .btn {
     background-color: #f76c6c;
     color: #ffffff;
-    padding: 8px 12px;
+    padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-weight: 600;
 }
 
 header .btn:hover {
@@ -201,6 +192,7 @@ main {
 .feature-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .feature-card h3 {
