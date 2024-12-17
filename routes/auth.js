@@ -3,6 +3,7 @@ const nodemailer = require('nodemailer'); //מאפשרת שליחת מיילים
 const bcrypt = require('bcryptjs'); // הצפנת סיסמאות
 const jwt = require('jsonwebtoken'); // משמש ליצירת עבור אימות משתמשים
 const User = require('../models/user'); // מודל המשתמש המייצג את המבנה של המשתמשים בבסיס הנתונים
+const { verifyToken, verifyAdmin } = require('./authMiddleware');
 
 // יוצר אובייקט שמאפשר להגדיר מסלולים בצורה מאורגנת ונפרדת מהקובץ הראשי
 const router = express.Router();
@@ -90,6 +91,9 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.get('/admin/dashboard', verifyToken, verifyAdmin, (req, res) => {
+    res.status(200).json({ message: 'Welcome to the Admin Dashboard' });
+});
 
 
 router.post('/forgot-password', async (req, res) => {

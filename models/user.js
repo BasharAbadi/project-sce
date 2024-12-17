@@ -1,6 +1,4 @@
 
-
-
 //  הגדרת משתמש חדש ב - מונגוס שהוא ספרייה שעובדת עם - מונגודב באמצעות js
 const mongoose = require('mongoose');
 
@@ -12,7 +10,7 @@ const UserSchema = new mongoose.Schema({
     password: { type: String, required: true },
     gender: { type: String, required: true },
     // סוג הנתונים הוא - סתרינג וגם חייב ךהיות אחד הערכים 
-    accountType: { type: String, enum: ['Customer', 'Contractor'], required: true }
+    accountType: { type: String, enum: ['Customer', 'Contractor', 'Admin'], required: true }
 }, { timestamps: true });
 // יצירת מודל על בסיס הסכמה שיצרנו
 module.exports = mongoose.model('User', UserSchema);
