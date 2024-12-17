@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +26,7 @@
                 <div class="sub-menu">
                   <div class="user-info">
                     <img src="images/avatar-logo.jpg" />
-                    <h2><span id="username1"></span></h2>
+                    <h2><span id="username"></span></h2>
                   </div>
                   <hr />
                   <a href="customer-profile.html" class="sub-menu-link">
@@ -96,18 +95,14 @@
     <script>
         // Simulate logged-in user name
            // שליפת שם המשתמש מה-LocalStorage
-      const username1 = localStorage.getItem('username1');
-      if (username1) {
-           document.getElementById("username1").innerText = username1;
-        } else {
-          document.getElementById("username1").innerText = "Guest"; // ברירת מחדל
-      }
-      const username2 = localStorage.getItem('username2');
-      if (username2) {
-           document.getElementById("username2").innerText = username2;
-        } else {
-          document.getElementById("username2").innerText = "Guest"; // ברירת מחדל
-      }
+           const username = localStorage.getItem('username');
+           const username2 = localStorage.getItem('username');
+          if(username){
+              document.getElementById("username").innerText = username;
+          }
+          if(username2){
+            document.getElementById("username2").innerText = username2;
+          }
 
 
 
