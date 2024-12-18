@@ -71,11 +71,13 @@
                     // בודק אם השרת החזיר תשובה עם סטטוס הצלחה 
                     if (response.ok) {
                         // שולף מידע מהתשובה 
-                        const { token, accountType,username } = await response.json();
+                        const { token, accountType,username,email } = await response.json();
 
                         // שומר את שני הנתונים כדי להשתמש בהם בדפים אחרים
                         localStorage.setItem('token', token);
                         localStorage.setItem('username', username);
+                        localStorage.setItem('email', email); 
+
 
                         // העברה לדף הנכון לפי סוג החשבון שיש לנו בנתונים 
                         if (accountType === 'Customer') {

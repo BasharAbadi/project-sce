@@ -26,7 +26,7 @@
               <div class="sub-menu">
                 <div class="user-info">
                   <img src="images/avatar-logo.jpg" />
-                  <h2><span id="username"></span></h2>
+                  <p><strong>Username:</strong> <span id="usernameProfile"></span></p>
                 </div>
                 <hr />
                 <a href="customer-profile.html" class="sub-menu-link">
@@ -60,7 +60,7 @@
     <!-- Main Content -->
     <main>
         <section class="profile-container">
-            <h1>User Profile</h1>
+            <h1>My Profile</h1>
             <div class="profile-card">
                 <p><strong>Username:</strong> <span id="username"></span></p>
                 <p><strong>Email:</strong> <span id="email"></span></p>
@@ -78,7 +78,7 @@
     <script>
         // קבלת פרטי המשתמש מה-Local Storage
         const username = localStorage.getItem('username') || "Guest";
-        const email = localStorage.getItem('email') || "Not provided";
+        const email = localStorage.getItem('email');
         const accountType = localStorage.getItem('accountType') || "Customer";
 
         // הצגת הנתונים בדף
