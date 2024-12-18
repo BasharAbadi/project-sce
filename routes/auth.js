@@ -75,7 +75,6 @@ router.post('/login', async (req, res) => {
         }
 
         
-
         // אם הסיסמה נכונה 
         console.log('Generating JWT token...');
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
@@ -83,13 +82,15 @@ router.post('/login', async (req, res) => {
        
         
         console.log('Login successful');
+        console.log('User email:', user.email);
+
         // נוסיף את שם המשתמש לתגובה
         res.status(200).json({ 
             token, 
             accountType: user.accountType,
             username: user.username, // הוספת שם המשתמש
-            email: user.email
-            
+            Useremail: user.email
+
         });
     } catch (err) {
         console.error('Error during login:', err);

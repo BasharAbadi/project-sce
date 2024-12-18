@@ -63,7 +63,7 @@
             <h1>My Profile</h1>
             <div class="profile-card">
                 <p><strong>Username:</strong> <span id="username"></span></p>
-                <p><strong>Email:</strong> <span id="email"></span></p>
+                <p><strong>Email:</strong> <span id="Useremail"></span></p>
                 <p><strong>Account Type:</strong> <span id="accountType"></span></p>
             </div>
         </section>
@@ -77,15 +77,19 @@
     <!-- Script Section -->
     <script>
         // קבלת פרטי המשתמש מה-Local Storage
-        const email = localStorage.getItem('email');
         const username = localStorage.getItem('username') || "Guest";
         const accountType = localStorage.getItem('accountType') || "Customer";
+        const Useremail = localStorage.getItem('Useremail') || "Not Available"; // שליפת המייל
+
+
+
+
 
 
         // הצגת הנתונים בדף
-        document.getElementById('email').innerText = email;
         document.getElementById('username').innerText = username;
         document.getElementById('accountType').innerText = accountType;
+        document.getElementById('Useremail').innerText = Useremail;
 
         // פונקציית Logout
         function logout() {
