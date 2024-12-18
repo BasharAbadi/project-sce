@@ -6,6 +6,8 @@ const path = require('path');
 const authRoutes = require('./routes/auth'); // חיבור לנתיבי האימות
 const Paint = require('./models/Paint'); // Import the Paint model
 const Drywall = require('./models/drywall'); // Import the Drywall model
+const User = require('./models/user'); // Import the User model
+
 dotenv.config();
 
 const app = express();
@@ -65,3 +67,27 @@ app.get('/api/drywalls', async (req, res) => {
 app.get('/drywall', (req, res) => {
     res.sendFile(path.join(__dirname, 'website', 'drywall.html'));
 })
+
+
+
+
+
+
+//for UsersList in the admin page.
+
+
+// Endpoint to fetch all users
+app.get('/api/users', async (req, res) => {
+  try {
+    const users = await User.find(); // Fetch all users from MongoDB
+    res.json(users); // Send the users as a JSON response
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ error: 'Failed to fetch users' });
+  }
+});
+
+// Route to serve the Users List page
+app.get('/users', (req, res) => {
+  res.sendFile(path.join(__dirname, 'website', 'Admin/UsersList.html')); // Ensure the path to the HTML file is correct
+});

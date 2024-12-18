@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users List</title>
+    <link rel="stylesheet" href="../styles/UsersList.css" />
+  </head>
+  <body>
+    <header>
+      <div class="Logo">
+        <a href="Admin.html"
+          ><img src="../images/IMG_6583.png" alt="Logo" width="100" />
+        </a>
+      </div>
+
+      <div class="header-content">
+        <h1>Table of Users!</h1>
+        <hr />
+      </div>
+    </header>
+
+    <table id="userTable" class="content-table">
+      <thead>
+        <tr>
+          <th>User Number</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>AccountType</th>
+          <th>Gender</th>
+        </tr>
+      </thead>
+      <tbody id="usersList"></tbody>
+    </table>
+    <script defer src="../scripts/UsersList.js"></script>
+  </body>
+</html>

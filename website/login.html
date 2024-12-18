@@ -83,6 +83,9 @@
                         } else if (accountType === 'Contractor') {
                             window.location.href = 'homepage-contractor.html';
                         }
+                        else if(accountType === 'Admin'){
+                            window.location.href = '../Admin/Admin.html';
+                        }
 
                     } else {
                         const errorMessage = await response.text();
