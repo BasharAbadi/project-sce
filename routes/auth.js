@@ -74,11 +74,13 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
-
+        
         // אם הסיסמה נכונה 
         console.log('Generating JWT token...');
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
+       
+        
         console.log('Login successful');
         console.log('User email:', user.email);
 
@@ -160,7 +162,7 @@ router.post('/reset-password', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Invalid or expired token' });
-    }
+    }
 });
 
 // מסלול לעדכון פרטי המשתמש (שם או אימייל)
@@ -197,4 +199,8 @@ router.put('/update', verifyToken, async (req, res) => {
 
 
 
-module.exports = router;
+
+
+
+
+module.exports = router;
