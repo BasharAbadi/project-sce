@@ -74,10 +74,14 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
+        
+
         // אם הסיסמה נכונה 
         console.log('Generating JWT token...');
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
+       
+        
         console.log('Login successful');
         // נוסיף את שם המשתמש לתגובה
         res.status(200).json({ 
@@ -156,8 +160,12 @@ router.post('/reset-password', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Invalid or expired token' });
-    }
+    }
 });
 
 
-module.exports = router;
+
+
+
+
+module.exports = router;
