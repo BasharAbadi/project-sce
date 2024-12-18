@@ -44,10 +44,11 @@
                     <p>help</p>
                     <span>></span>
                   </a>
-                  <a href="" class="sub-menu-link">
+                  <a href="main_page.html" class="sub-menu-link" onclick="logout()">
                     <img src="images/profile images/logout.png" />
-                    <p>logout</p>
+                    <p>Logout</p>
                     <span>></span>
+                  </a>
                   </a>
                 </div>
               </div>
@@ -107,15 +108,15 @@
 
 
 
-      function logout() {
+        function logout() {
         alert('You have been logged out.');
-            window.location.href = 'login.html';
+            window.location.href = 'main_page.html';
         }
         let subMenu = document.getElementById("subMenu");
         function toggleMenu(){
         subMenu.classList.toggle("open-menu");
         
-}
+        }
 
     </script>
 </body>

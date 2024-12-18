@@ -83,7 +83,9 @@ router.post('/login', async (req, res) => {
         res.status(200).json({ 
             token, 
             accountType: user.accountType,
-            username: user.username // הוספת שם המשתמש
+            username: user.username, // הוספת שם המשתמש
+            email: user.email
+            
         });
     } catch (err) {
         console.error('Error during login:', err);

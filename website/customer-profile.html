@@ -44,9 +44,9 @@
                   <p>help</p>
                   <span>></span>
                 </a>
-                <a href="" class="sub-menu-link">
+                <a href="main_page.html" class="sub-menu-link" onclick="logout()">
                   <img src="images/profile images/logout.png" />
-                  <p>logout</p>
+                  <p>Logout</p>
                   <span>></span>
                 </a>
               </div>
@@ -77,13 +77,14 @@
     <!-- Script Section -->
     <script>
         // קבלת פרטי המשתמש מה-Local Storage
-        const username = localStorage.getItem('username') || "Guest";
         const email = localStorage.getItem('email');
+        const username = localStorage.getItem('username') || "Guest";
         const accountType = localStorage.getItem('accountType') || "Customer";
 
+
         // הצגת הנתונים בדף
-        document.getElementById('username').innerText = username;
         document.getElementById('email').innerText = email;
+        document.getElementById('username').innerText = username;
         document.getElementById('accountType').innerText = accountType;
 
         // פונקציית Logout
