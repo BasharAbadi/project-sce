@@ -62,7 +62,7 @@
         <section class="profile-container">
             <h1>My Profile</h1>
             <div class="profile-card">
-                <p><strong>Username:</strong> <span id="username"></span><button class="edit-btn" onclick="showEditBox('username')">edit</button></p>
+                <p><strong>Username:</strong> <span id="username1"></span><button class="edit-btn" onclick="showEditBox('username')">edit</button></p>
                 <p><strong>Email:</strong> <span id="email"></span><button class="edit-btn" onclick="showEditBox('email')">edit</button></p>
                 <p>
                   <strong>Password: ********</strong>
@@ -91,6 +91,8 @@
     <script>
         // קבלת פרטי המשתמש מה-Local Storage
         const username = localStorage.getItem('username') || "Guest";
+        const username1 = localStorage.getItem('username') || "Guest";
+
         const accountType = localStorage.getItem('accountType') || "Customer";
         const email = localStorage.getItem('Useremail') || "Not Available"; // שליפת המייל
         const gender = localStorage.getItem('gender');
@@ -103,6 +105,8 @@
         // הצגת הנתונים בדף
         document.getElementById('gender').innerText=gender;
         document.getElementById('username').innerText = username;
+        document.getElementById('username1').innerText = username1;
+
         document.getElementById('accountType').innerText = accountType;
         document.getElementById('email').innerText = email;
 
