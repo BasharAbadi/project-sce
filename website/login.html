@@ -54,6 +54,7 @@
                 const email = document.getElementById('loginEmail').value.toLowerCase();
                 const password = document.getElementById('loginPassword').value;
 
+
                 try {
                     // שולח בקשת  
                     // HTTP 
@@ -80,6 +81,10 @@
                         localStorage.setItem('username', username);
                         const Useremail = document.getElementById('loginEmail').value
                         localStorage.setItem('Useremail', Useremail); // שמירת המייל ב-Local Storage
+                        const gender = localStorage.getItem('gender'); // שליפת הערך מ-LocalStorage
+                        if (gender) {
+                            console.log('Gender:', gender); // הצגת הערך בקונסול או שימוש בו
+                        }
 
 
 

@@ -49,6 +49,7 @@
             const email = document.getElementById('signupEmail').value;
             const password = document.getElementById('signupPassword').value;
             const gender = document.querySelector('input[name="gender"]:checked').value;
+            localStorage.setItem('gender',gender);
             
             // שליחת בקשה HTTP 
             const response = await fetch('/api/auth/signup/customer', {
@@ -56,9 +57,10 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, email, password, gender })
             });
-             
             // אם ההרשמה הצליחה אז מעביר אותו לדף הזה
             if (response.ok) {
+
+
                 alert('Customer account created successfully!');
                 window.location.href = 'login.html';
             } else {

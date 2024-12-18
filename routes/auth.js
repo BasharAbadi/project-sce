@@ -87,7 +87,8 @@ router.post('/login', async (req, res) => {
             token, 
             accountType: user.accountType,
             username: user.username, // הוספת שם המשתמש
-            Useremail: user.email
+            Useremail: user.email,
+            gender: user.gender
 
         });
     } catch (err) {
@@ -161,6 +162,39 @@ router.post('/reset-password', async (req, res) => {
         res.status(500).json({ message: 'Invalid or expired token' });
     }
 });
+
+// מסלול לעדכון פרטי המשתמש (שם או אימייל)
+router.put('/update', verifyToken, async (req, res) => {
+    const { field, value } = req.body; // השדה והערך החדש
+    const allowedFields = ['username', 'email']; // שדות מותרים לעדכון
+
+    try {
+        // בדיקה אם השדה חוקי
+        if (!allowedFields.includes(field)) {
+            return res.status(400).json({ message: 'Invalid field for update' });
+        }
+
+        // מציאת המשתמש על פי הטוקן
+        const user = await User.findById(req.user.id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // עדכון השדה המתאים
+        user[field] = value;
+        await user.save();
+
+        res.status(200).json({ 
+            message: `${field} updated successfully`,
+            updatedField: field,
+            updatedValue: value
+        });
+    } catch (error) {
+        console.error('Error updating user details:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
 
 
 module.exports = router;
