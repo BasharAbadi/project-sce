@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Catalog</title>
+    <link rel="stylesheet" href="../styles/EditCatalog.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="../images/IMG_6583.png" alt="LOGO" />
+      </div>
+      <h1>Edit Catalog</h1>
+      <div class="header-content">
+        <nav>
+          <a href="Admin.html">Home</a>
+          <a href="WebsiteStats.html">Website Stats</a>
+          <a href="UsersList.html">Users</a>
+        </nav>
+      </div>
+    </header>
+
+    <section id="editFormSection">
+      <h2>Edit Paint</h2>
+      <form id="editPaintForm">
+        <label for="editName">Name:</label>
+        <input type="text" id="editName" name="name" required />
+        <br />
+
+        <label for="editQuality">Quality:</label>
+        <input type="text" id="editQuality" name="quality" required />
+        <br />
+
+        <label for="editPrice">Price:</label>
+        <input type="number" id="editPrice" name="price" required />
+        <br />
+
+        <label for="editRating">Rating:</label>
+        <input
+          type="number"
+          id="editRating"
+          name="rating"
+          required
+          min="1"
+          max="5"
+        />
+        <br />
+        <button type="submit">Save Changes</button>
+        <button type="button">Delete Product</button>
+        <button type="button" onclick="cancelEdit()">Cancel</button>
+      </form>
+    </section>
+
+    <button id="addPaintBtn">+</button>
+    <section id="addPaintFormSection" style="display:none;">
+        <h2>Add New Paint!</h2>
+        <form id="addPaintForm">
+            <label for="newName">Name:</label>
+            <input type="text" id="newName" name="name" required />
+            <br />
+            <label for="newQuality">Quality:</label>
+            <input type="text" id="newQuality" name="quality" required />
+            <br />
+            <label for="newPrice">Price:</label>
+            <input type="number" id="newPrice" name="price" required />
+            <br />
+            <label for="newRating">Rating:</label>
+            <input type="number" id="newRating" name="rating" required min="1" max="5" />
+            <br />
+            <button type="submit">Add Paint</button>
+            <button type="button" onclick="cancelAdd()">Cancel</button>
+          </form>
+        </section>
+    <main>
+      <table id="paintTable" class="content-table">
+        <thead>
+          <tr>
+            <th>Paint Number</th>
+            <th>Name</th>
+            <th>Quality</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="paintList"></tbody>
+      </table>
+    </main>
+    <script defer src="../scripts/EditCatalog.js"></script>
+  </body>
+</html>
