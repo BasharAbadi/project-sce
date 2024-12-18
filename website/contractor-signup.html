@@ -51,6 +51,8 @@
             const email = document.getElementById('signupEmail').value;
             const password = document.getElementById('signupPassword').value;
             const gender = document.querySelector('input[name="gender"]:checked').value;
+            localStorage.setItem('gender',gender);
+
 
             // שליחת בקשה HTTP 
             const response = await fetch('/api/auth/signup/contractor', {
