@@ -34,5 +34,5 @@ document.getElementById("feature").addEventListener("click", (e) => {
 function logout(){
     localStorage.clear();
     alert("You have been logged out.");
-    window.location.href = 'main_page.html';
+    window.location.href = '../main_page.html';
 }
